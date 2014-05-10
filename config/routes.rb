@@ -1,4 +1,6 @@
 Railsgirls::Application.routes.draw do
+  resources :comments
+
   #get "pages/info"
   get 'tag/:tag', to: 'ideas#index', as: :tag
   root :to => redirect('/ideas')
