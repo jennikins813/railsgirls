@@ -5,3 +5,11 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+10.times do |i|
+   Idea.create(
+     name: "Idea#{i}",
+     description: "Description#{i}",
+     picture: "#{i}",
+      )
+end
