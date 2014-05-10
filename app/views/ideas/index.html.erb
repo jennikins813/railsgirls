@@ -2,25 +2,27 @@
 
 <b><%= link_to 'Create New Idea', new_idea_path %></b>
 
-  <body>
-    <% @ideas.each do |idea| %>
-        <h2><%= link_to idea.name,idea %></h2>
+
+<% @ideas.in_groups_of(2) do |group| %>
+  <div class="row">
+    <% group.compact.each do |idea| %>
+      <div class="span4">
+        <%= image_tag idea.picture_url, :width => '100%' if idea.picture.present?%>
+        <h4><%= link_to idea.name, idea %></h4>
+        <%= idea.description %>
         <p>Tags: <%= raw idea.tag_list.map {|t| link_to t, tag_path(t)}.join(', ') %></p>
 
         <%= link_to 'Show', idea %> |
         <%= link_to 'Edit', edit_idea_path(idea) %> 
-      
+      </div>
     <% end %>
+  </div>
+<% end %>
 
     <div id="tag_cloud">
       <% tag_cloud Idea.tag_counts, %w{s m l} do |tag, css_class| %>
       <%= link_to tag.name, tag_path(tag.name), class: css_class %>
       <% end %>
     </div>
-  </body>
 
 <br>
-
-<!-- 
-
--->
