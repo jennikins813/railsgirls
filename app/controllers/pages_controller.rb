@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  def new
+  def info
   	@page = Page.new
   end
 
